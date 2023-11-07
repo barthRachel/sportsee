@@ -1,8 +1,17 @@
 import './ActivityChart.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+/**
+ * Affichage de l'activité quotidienne d'un utilisateur sous la forme d'un BarChart en utilisant Recharts.
+ * @param { Object } activityData 
+ * @returns { React.component }
+ */
 function ActivityChart({activityData}) {
 
+	/**
+	 * Affichage d'un tooltip customisé pour obtenir le rendu de la maquette. 
+	 * @returns { React.component }
+	 */
     const CustomToolTip = ({active, payload}) => {
         if (active && payload && payload.length) {
             return (

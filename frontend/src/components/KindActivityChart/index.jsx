@@ -1,7 +1,13 @@
 import './KindActivityChart.css';
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, PolarRadiusAxis, Text } from 'recharts';
 
+/**
+ * Affichage des types d'activités de l'utilsateur sous la forme d'un RadarChart en utilisant Recharts.
+ * @param { Object } kindData 
+ * @returns { React.Component }
+ */
 function KindActivityChart({kindData}) {
+	console.log(kindData)
     const renderPolarAngleAxis = ({ payload, x, y, cx, cy, ...rest }) => {
 		const formatLabel = (value) => {
 			if (value === 'Energy') return 'Energie'

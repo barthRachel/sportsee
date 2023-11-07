@@ -1,5 +1,10 @@
 import './KeyFigure.css'
 
+/**
+ * Composant des chiffres clés de l'utilisateur.
+ * @param { Object }  
+ * @returns { React.Component }
+ */
 function KeyFigure({logo, count, unit, title, classname}) {
 
     return (

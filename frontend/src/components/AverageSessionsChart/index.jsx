@@ -1,7 +1,11 @@
 import './AverageSessionsChart.css';
-
 import { LineChart, Line, XAxis, Tooltip, YAxis, ResponsiveContainer, } from 'recharts'
 
+/**
+ * Affichage des durées moyennes de sessions de l'utilisateur sous la forme d'un LineChart en utilisant Recharts.
+ * @param { Object } averageData 
+ * @returns { React.Component }
+ */
 function AverageSessionsChart({averageData}) {
     const CustomToolTip = ({active, payload}) => {
         if (active && payload && payload.length) {

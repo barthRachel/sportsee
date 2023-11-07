@@ -1,6 +1,11 @@
 import './ScoreChart.css';
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
+/**
+ * Affichage du remplissage de l'objectif moyen de l'utilisateur sous la forme d'un RadialBarChart en utilisant Recharts.
+ * @param { Object } data 
+ * @returns { React.Component }
+ */
 function ScoreChart({data}) {    
     const score = data.todayScore ? data.todayScore : data.score
 	const dataArray = [{ name: 'score', value: score }]

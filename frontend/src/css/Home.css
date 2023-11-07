@@ -1,80 +1,27 @@
 .mainHome {
-    margin-left: 117px;
+    margin-left: 130px;
     margin-top: 100px;
-   /*  width: fit-content; */
 }
 
-.dashboardContainer {
-    width: fit-content;
-    margin: auto;
-}
-
-.loadingAndErrorContainer {
-    width: 100%;
-    height: 100%;
+.linkContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.loadingAndErrorContainer h2 {
-    width: 100%;
-    height: 100%;
+.linkContainer a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: red;
+    font-weight: 700;
+    background-color: black;
+    transition: all 0.25s ease-in-out;
 }
 
-.profilContainer {
-    padding-top: 40px;
+.linkContainer a:hover {
+    background-color: red;
+    color: black;
 }
 
-.profilContainer h1 {
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 50% */
-}
-
-.profilContainer h1 > span {
-    color: #FF0101;
-}
-
-.profilContainer p {
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px; /* 133.333% */
-}
-
-.analyticsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.chartsContainer {
-    width: 100%;
-    height: 100%;
-    margin: 0 15px 30px 0;
-    padding: 25px 0 0 25px;
-    position: relative;
-}
-
-.miniCharts {
-    display: flex;
-    flex-direction: row;
-    max-height: 320px;
-    height: 100%;
-}
-
-.card {
-    width: 16.25rem;
-    height: 16.25rem;
-    margin-right: 30px;
-}
-
-.card:last-child {
-    margin-right: 0;
-}
-
-.keyFiguresContainer {
-    margin-left: 15px;
+.linkContainer a:nth-child(1) {
+    margin-right: 15px;
 }

@@ -4,6 +4,10 @@ import bike from '../../assets/bike.png';
 import swim from '../../assets/swim.png';
 import yoga from '../../assets/yoga.png';
 
+/**
+ * Footer lateral de l'application
+ * @returns { React.Component }
+ */
 function Sidebar() {
     return(
         <aside className='sidebar'>
