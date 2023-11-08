@@ -1,12 +1,10 @@
 import '../css/Dashboard.css';
-import useFetch from '../utils/useFetch';
-
+import useAxios from '../utils/useAxios';
 import ActivityChart from '../components/ActivityChart';
 import AverageSessionsChart from '../components/AverageSessionsChart';
 import KindActivityChart from '../components/KindActivityChart';
 import ScoreChart from '../components/ScoreChart';
 import KeyFigure from '../components/KeyFigure';
-
 import apple from '../assets/apple.png';
 import cheeseburger from '../assets/cheeseburger.png';
 import chicken from '../assets/chicken.png';
@@ -18,28 +16,27 @@ import { useParams } from 'react-router-dom';
  * @returns { React.Component }
  */
 function Dashboard() {
-
     const id = useParams().id
 
-    const user = useFetch(
+    const user = useAxios(
         `http://localhost:3000/user/${id}`,
         id,
         '/mocked-data/user-main.json'
     )
 
-    const activity = useFetch(
+    const activity = useAxios(
         `http://localhost:3000/user/${id}/activity`,
         id,
         '/mocked-data/user-activity.json'
     )
 
-    const average_sessions = useFetch(
+    const average_sessions = useAxios(
         `http://localhost:3000/user/${id}/average-sessions`,
         id,
         '/mocked-data/user-average-sessions.json'
     )
 
-    const performance = useFetch(
+    const performance = useAxios(
         `http://localhost:3000/user/${id}/performance`,
         id,
         '/mocked-data/user-performance.json'
@@ -53,7 +50,7 @@ function Dashboard() {
      */
     const formatingData = (objectData, receiveData) => {
         if (receiveData.apiData) {
-            objectData = receiveData.apiData
+            objectData = receiveData.apiData.data
         } else if (receiveData.mockedData) {
             objectData = receiveData.mockedData
         }
@@ -75,8 +72,8 @@ function Dashboard() {
         )
     }
 
-    if ((user.errorAPI && user.errorMocked) || (activity.errorAPI && activity.errorMocked) || (average_sessions.errorAPI && average_sessions.errorMocked) || (performance.errorAPI && performance.errorMocked)) {
-        console.log("user.errorMocked")
+    if((userData === undefined) || (activityData === undefined) || (average_sessionsData === undefined) || (performanceData === undefined)) {
+        console.log("error")
         return(
             <div className='loadingAndErrorContainer'>
                 <h2>Une erreur est survenue !</h2>
@@ -90,9 +87,9 @@ function Dashboard() {
                 {
                     userData && (
                         <div className='profilContainer'>
-                        <h1>Bonjour <span>{userData.userInfos.firstName}</span></h1>
-                        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-                    </div>
+                            <h1>Bonjour <span>{userData.userInfos.firstName}</span></h1>
+                            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+                        </div>
                     )
                 }
                 

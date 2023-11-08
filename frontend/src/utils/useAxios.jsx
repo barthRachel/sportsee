@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
-function useFetch(urlAPI, userID, urlMockedData) {
+function useAxios(urlAPI, userID, urlMockedData) {
 	const [apiData, setApiData] = useState(null)
 	const [mockedData, setMockedData] = useState(null)
 	const [isLoading, setLoading] = useState(true)
@@ -41,4 +41,4 @@ function useFetch(urlAPI, userID, urlMockedData) {
 	return { isLoading, apiData, mockedData, errorAPI, errorMocked }
 }
 
-export default useFetch
+export default useAxios
