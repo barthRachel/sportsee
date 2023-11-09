@@ -72,13 +72,12 @@ function Dashboard() {
         )
     }
 
-    if((userData === undefined) || (activityData === undefined) || (average_sessionsData === undefined) || (performanceData === undefined)) {
-        console.log("error")
+    if(user.error ){
         return(
             <div className='loadingAndErrorContainer'>
-                <h2>Une erreur est survenue !</h2>
+                <h2>{user.errorMessage}</h2>
             </div>
-        )
+        ) 
     }
 
     return(

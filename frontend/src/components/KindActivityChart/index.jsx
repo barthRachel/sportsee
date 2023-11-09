@@ -7,7 +7,6 @@ import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Pola
  * @returns { React.Component }
  */
 function KindActivityChart({kindData}) {
-	console.log(kindData)
     const renderPolarAngleAxis = ({ payload, x, y, cx, cy, ...rest }) => {
 		const formatLabel = (value) => {
 			if (value === 'Energy') return 'Energie'

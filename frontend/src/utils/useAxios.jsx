@@ -5,8 +5,9 @@ function useAxios(urlAPI, userID, urlMockedData) {
 	const [apiData, setApiData] = useState(null)
 	const [mockedData, setMockedData] = useState(null)
 	const [isLoading, setLoading] = useState(true)
-	const [errorAPI, setErrorAPI] = useState(false)
-	const [errorMocked, setErrorMocked] = useState(false)
+	const [error, setError] = useState(false)
+	const [errorMessage, setErrorMessage] = useState("")
+	
 	useEffect(() => {
 		setLoading(true)
 		async function fetchData(fetchURL, isDataMocked, errorSetState) {
@@ -16,29 +17,34 @@ function useAxios(urlAPI, userID, urlMockedData) {
 					setApiData(response.data)
 				} else if (isDataMocked === true) {
 					if (userID) {
- 						setMockedData(
-							(response.data).find(
-								(item) =>
-									item.id === parseInt(userID) ||
-									item.userId === parseInt(userID)
-							)
-						) 
+						let mockedData = (response.data).find(
+							(item) =>
+								item.id === parseInt(userID) ||
+								item.userId === parseInt(userID)
+						)
+
+						if(mockedData === undefined) {
+							throw new Error("Aucune données mockées trouvées.")
+						}
+						
+ 						setMockedData(mockedData)
 					}
 				}
 			} catch (err) {
-				console.log(err)
-				if (urlMockedData) {
-					fetchData(urlMockedData, true, setErrorMocked)
-				}
 				errorSetState(true)
+				if(typeof err === "string") {
+					setErrorMessage(err)
+				} else {
+					setErrorMessage(err.message)
+				}
 			} finally {
 				setLoading(false)
 			}
 		}
-		//fetchData(urlAPI, false, setErrorAPI)
-        fetchData(urlAPI, true, setErrorAPI)
+		//fetchData(urlAPI, false, setError)
+        fetchData(urlMockedData, true, setError)
 	}, [urlAPI, userID, urlMockedData])
-	return { isLoading, apiData, mockedData, errorAPI, errorMocked }
+	return { isLoading, apiData, mockedData, error, errorMessage}
 }
 
 export default useAxios
